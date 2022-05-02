@@ -1,0 +1,68 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.short_bow.pull": {
+			"animation_length": 1.08333,
+			"bones": {
+				"mid_string_bone": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 0, 0.43]
+						},
+						"0.2917": {
+							"vector": [0, 0, 0.96]
+						},
+						"0.6667": {
+							"vector": [0, 0, 1.88]
+						},
+						"1.0833": {
+							"vector": [0, 0, 2.9]
+						}
+					}
+				},
+				"low_string_bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0833": {
+							"vector": [-22.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0833": {
+							"vector": [0, 3.25, 3.75]
+						}
+					}
+				},
+				"high_string_bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0833": {
+							"vector": [22.5, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0833": {
+							"vector": [0, -3.25, 3.75]
+						}
+					}
+				}
+			}
+		}
+	}
+}

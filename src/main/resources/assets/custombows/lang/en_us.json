@@ -1,0 +1,14 @@
+{
+  "item.custombows.short_bow": "Short Bow",
+  "item.custombows.compound_bow": "Compound Bow",
+  "item.custombows.torch_arrow" : "Torch Arrow",
+  "item.custombows.hardened_shaft" : "Hardened Shaft",
+  "item.custombows.arrow_workstation_base" : "Arrow Workstation Base",
+
+  "blocks.custombows.arrow_workstation_base" : "Arrow Workstation Base",
+
+  "itemGroup.custombows.item_tab" : "Item Tab",
+  "itemGroup.custombows.weapon_tab" : "Weapons Tab",
+
+  "container.custombows.arrow_workstation_base" : "Arrow Workstation Base"
+}
