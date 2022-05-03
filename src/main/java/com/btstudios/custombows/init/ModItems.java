@@ -2,7 +2,7 @@ package com.btstudios.custombows.init;
 
 import com.btstudios.custombows.CustomBows;
 import com.btstudios.custombows.items.custom.ShortBow;
-import com.btstudios.custombows.items.custom.TorchArrowItem;
+import com.btstudios.custombows.items.custom.CustomArrowItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,7 +16,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> SHORT_BOW = ITEMS.register("short_bow", () -> new ShortBow(new Item.Properties().tab(ModCreativeModeTab.WEAPON_TAB).durability(500)));
 
-    public static final RegistryObject<Item> TORCH_ARROW = ITEMS.register("torch_arrow", () -> new TorchArrowItem(new Item.Properties().tab(ModCreativeModeTab.WEAPON_TAB), 1.5f));
+    public static final RegistryObject<Item> TORCH_ARROW = ITEMS.register("torch_arrow", () -> new CustomArrowItem(new Item.Properties().tab(ModCreativeModeTab.WEAPON_TAB), 1.5f));
 
     public static final RegistryObject<Item> HARDENED_SHAFT = ITEMS.register("hardened_shaft", () -> new Item(new Item.Properties().tab(ModCreativeModeTab.ITEM_TAB).stacksTo(16)));
 

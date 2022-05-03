@@ -1,7 +1,7 @@
 package com.btstudios.custombows.client;
 
 import com.btstudios.custombows.CustomBows;
-import com.btstudios.custombows.client.renderer.entity.TorchArrowRenderer;
+import com.btstudios.custombows.client.renderer.entity.CustomArrowRenderer;
 import com.btstudios.custombows.init.ModEntityType;
 import com.btstudios.custombows.recipes.ArrowWorkstationBaseRecipe;
 import net.minecraft.core.Registry;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientModEventSubscriber {
     @SubscribeEvent
     public static void onClientSetup(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntityType.TORCH_ARROW.get(), TorchArrowRenderer::new);
+        event.registerEntityRenderer(ModEntityType.CUSTOM_ARROW.get(), CustomArrowRenderer::new);
 
     }
 

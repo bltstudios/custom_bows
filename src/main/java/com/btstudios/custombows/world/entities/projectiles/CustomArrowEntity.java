@@ -17,17 +17,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class TorchArrowEntity extends AbstractArrow {
+public class CustomArrowEntity extends AbstractArrow {
 
     private final Item refItem;
 
-    public TorchArrowEntity(EntityType<? extends AbstractArrow> type, Level world) {
+    public CustomArrowEntity(EntityType<? extends AbstractArrow> type, Level world) {
         super(type, world);
         this.refItem = ModItems.TORCH_ARROW.get();
     }
 
-    public TorchArrowEntity(LivingEntity pShooter, Level world, Item refItem) {
-        super(ModEntityType.TORCH_ARROW.get(), pShooter, world);
+    public CustomArrowEntity(LivingEntity pShooter, Level world, Item refItem) {
+        super(ModEntityType.CUSTOM_ARROW.get(), pShooter, world);
         this.refItem = refItem;
     }
 

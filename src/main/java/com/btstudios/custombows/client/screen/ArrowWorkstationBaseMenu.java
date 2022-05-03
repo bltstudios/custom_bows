@@ -1,8 +1,10 @@
 package com.btstudios.custombows.client.screen;
+import com.btstudios.custombows.blocks.container.ArrowWorkstationBaseContainer;
 import com.btstudios.custombows.blocks.entity.ArrowWorkstationBaseEntity;
 import com.btstudios.custombows.client.screen.slot.ModResultSlot;
 import com.btstudios.custombows.init.ModBlocks;
 import com.btstudios.custombows.init.ModMenuTypes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -78,17 +80,17 @@ public class ArrowWorkstationBaseMenu extends AbstractContainerMenu {
     public static final int TE_HEAD_SLOT_HEIGHT = 10;
 
     public static final int TE_SHAFT_SLOT_X = 10;
-    public static final int TE_SHAFT_SLOT_Y = 20;
+    public static final int TE_SHAFT_SLOT_Y = 50;
     public static final int TE_SHAFT_SLOT_WIDTH = 10;
     public static final int TE_SHAFT_SLOT_HEIGHT = 10;
 
     public static final int TE_BINDING_SLOT_X = 10;
-    public static final int TE_BINDING_SLOT_Y = 20;
+    public static final int TE_BINDING_SLOT_Y = 80;
     public static final int TE_BINDING_SLOT_WIDTH = 10;
     public static final int TE_BINDING_SLOT_HEIGHT = 10;
 
     public static final int TE_FEATHERS_SLOT_X = 10;
-    public static final int TE_FEATHERS_SLOT_Y = 20;
+    public static final int TE_FEATHERS_SLOT_Y = 110;
     public static final int TE_FEATHERS_SLOT_WIDTH = 10;
     public static final int TE_FEATHERS_SLOT_HEIGHT = 10;
 
@@ -143,5 +145,9 @@ public class ArrowWorkstationBaseMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
+    }
+
+    public MenuConstructor getServerContainer(ArrowWorkstationBaseEntity workstation, BlockPos pos) {
+        return (id, playerInv, player) -> new ArrowWorkstationBaseMenu(id, playerInv, workstation, data);
     }
 }

@@ -7,10 +7,10 @@ import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class TorchArrowItem extends ArrowItem {
+public class CustomArrowItem extends ArrowItem {
     public final float damage;
 
-    public TorchArrowItem(Properties builder, float damage) {
+    public CustomArrowItem(Properties builder, float damage) {
         super(builder);
         this.damage = damage;
     }
@@ -26,6 +26,6 @@ public class TorchArrowItem extends ArrowItem {
     @Override
     public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.world.entity.player.Player player) {
         int enchant = net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.INFINITY_ARROWS, bow);
-        return enchant <= 0 ? false : this.getClass() == TorchArrowItem.class;
+        return enchant <= 0 ? false : this.getClass() == CustomArrowItem.class;
     }
 }

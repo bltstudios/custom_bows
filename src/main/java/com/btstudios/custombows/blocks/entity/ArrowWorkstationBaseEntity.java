@@ -1,6 +1,7 @@
 package com.btstudios.custombows.blocks.entity;
 
 import com.btstudios.custombows.CustomBows;
+import com.btstudios.custombows.blocks.container.ArrowWorkstationBaseContainer;
 import com.btstudios.custombows.client.screen.ArrowWorkstationBaseMenu;
 import com.btstudios.custombows.init.ModBlockEntities;
 import com.btstudios.custombows.recipes.ArrowWorkstationBaseRecipe;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.MenuConstructor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;

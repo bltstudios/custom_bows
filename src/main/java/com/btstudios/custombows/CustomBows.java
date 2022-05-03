@@ -1,5 +1,6 @@
 package com.btstudios.custombows;
 
+import com.btstudios.custombows.blocks.container.ArrowWorkstationBaseContainer;
 import com.btstudios.custombows.client.screen.ArrowWorkstationBaseScreen;
 import com.btstudios.custombows.init.*;
 import com.btstudios.custombows.util.ModItemProperties;
