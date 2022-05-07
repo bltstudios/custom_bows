@@ -1,6 +1,7 @@
 package com.btstudios.custombows.client.screen;
 
 import com.btstudios.custombows.CustomBows;
+import com.btstudios.custombows.init.ModTags;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
@@ -8,6 +9,7 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,13 +20,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ForgeItemTagsProvider;
+import org.apache.logging.log4j.core.Logger;
+import org.jetbrains.annotations.Debug;
 
 public class ArrowWorkstationBaseScreen extends AbstractContainerScreen<ArrowWorkstationBaseMenu> {
-    public static final TagKey<Item> ACCEPTABLE_HEAD_TAGS = ItemTags.create(new ResourceLocation(CustomBows.MOD_ID, "/tags/items/acceptable_heads"));
-    public static final TagKey<Item> ACCEPTABLE_SHAFT_TAGS = ItemTags.create(new ResourceLocation(CustomBows.MOD_ID, "/tags/items/acceptable_shafts"));
-    public static final TagKey<Item> ACCEPTABLE_BINDING_TAGS = ItemTags.create(new ResourceLocation(CustomBows.MOD_ID, "/tags/items/acceptable_bindings"));
-    public static final TagKey<Item> ACCEPTABLE_FEATHER_TAGS = ItemTags.create(new ResourceLocation(CustomBows.MOD_ID, "/tags/items/acceptable_feathers"));
-
 
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(CustomBows.MOD_ID, "textures/gui/arrow_workstation_base_gui_bg.png");
@@ -81,24 +80,22 @@ public class ArrowWorkstationBaseScreen extends AbstractContainerScreen<ArrowWor
         super.init();
         this.headButton = addRenderableWidget(
                 new ImageButton(ArrowWorkstationBaseMenu.TE_HEAD_SLOT_X, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_Y, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_HEIGHT, 0, 0, 0, HEAD_BUTTON_TEX, btn -> {
-                    showHeads = true;
-                    showBinding = false;
-                    showShaft = false;
-                    showFeather = false;
-                    showInv = false;
+                    int x = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_X + ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH;
+                    int y = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_Y;
+                    int width = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH;
+                    int height = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_HEIGHT;
+                    if(getAllOfType(ModTags.Items.ACCEPTABLE_HEADS, pInv) != null) {
+                        for (ItemStack a : getAllOfType(ModTags.Items.ACCEPTABLE_HEADS, pInv)) {
+                            renderImageButton(x, y, width, height, 0, 0, 0, HEAD_BUTTON_TEX, a, 0);
+                            x += width;
+                        }
+                    }
+                    else {
+                        CustomBows.LOGGER.debug("Did not render buttons as inventory was empty");
+                    }
                 }));
 
-        if(showHeads) {
-            int x = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_X + ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH;
-            int y = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_Y;
-            int width = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH;
-            int height = ArrowWorkstationBaseMenu.TE_HEAD_SLOT_HEIGHT;
-            for (ItemStack a: getAllOfType(ACCEPTABLE_HEAD_TAGS, pInv)) {
-                renderImageButton(x, y, width, height, 0,0,0, HEAD_BUTTON_TEX, a, 0);
-                x += width;
-            }
-        }
-
+        /*
         this.shaftButton = addRenderableWidget(
                 new ImageButton(ArrowWorkstationBaseMenu.TE_SHAFT_SLOT_X, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_Y, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_WIDTH, ArrowWorkstationBaseMenu.TE_HEAD_SLOT_HEIGHT, 0,0,0, SHAFT_BUTTON_TEX, btn -> {
                     showShaft = true;
@@ -118,6 +115,7 @@ public class ArrowWorkstationBaseScreen extends AbstractContainerScreen<ArrowWor
                 x += width;
             }
         }
+        */
     }
 
     @Override
@@ -138,12 +136,15 @@ public class ArrowWorkstationBaseScreen extends AbstractContainerScreen<ArrowWor
 
     protected NonNullList<ItemStack> getAllOfType(TagKey<Item> tagKey, Inventory pInv) {
         NonNullList<ItemStack> items = null;
-        for (ItemStack a: pInv.items) {
-           if(a.is(tagKey)) {
-               items.add(a);
-           }
+        String invEmptyCheck = pInv.isEmpty() ? "Empty" : "not Empty";
+        CustomBows.LOGGER.debug("pInv is " + invEmptyCheck);
+        if(!pInv.isEmpty()) {
+            for (ItemStack a : pInv.items) {
+                if (Registry.ITEM.getHolderOrThrow(Registry.ITEM.getResourceKey(a.getItem()).get()).is(tagKey)) {
+                    items.add(a);
+                }
+            }
         }
-
         return items;
     }
 }

@@ -1,5 +1,6 @@
 package com.btstudios.custombows.items.custom;
 
+import com.btstudios.custombows.util.CustomArrowTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -9,6 +10,8 @@ import net.minecraft.world.level.Level;
 
 public class CustomArrowItem extends ArrowItem {
     public final float damage;
+
+    public CustomArrowTypes arrowType;
 
     public CustomArrowItem(Properties builder, float damage) {
         super(builder);

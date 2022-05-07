@@ -23,7 +23,7 @@ public class CustomBows
 {
     public static final String MOD_ID = "custombows";
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public CustomBows() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
